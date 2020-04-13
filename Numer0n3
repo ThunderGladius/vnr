@@ -1,0 +1,105 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void enter(int player,string &s) {
+	bool finish = 0;
+	while (finish == 0) {
+		cout << "Player" << player << "�݂͌��ɈقȂ�3���̐��l����͂��ĉ�����" << endl;
+		cin >> s;
+		if (s.size() != 3 || s.at(0) == s.at(1) || s.at(1) == s.at(2) || s.at(2) == s.at(0)) {
+			cout << "[�����񂪕s�K�ł�]" << endl;
+		}
+		else {
+			cout << "[����OK]" << endl << endl;
+			finish = 1;
+		}
+	}
+}
+
+
+void hl(string senemy,bool &Item) {
+	for (int i = 0; i < 3; i++) {
+		if (senemy.at(i) == '0' ||
+			senemy.at(i) == '1' ||
+			senemy.at(i) == '2' ||
+			senemy.at(i) == '3' ||
+			senemy.at(i) == '4' ||
+			senemy.at(i) == '5') {
+			cout << "L";
+		}
+		else cout << "H";
+	}
+	Item = 1;
+	cout << endl;
+}
+
+
+void attack(int player, string& senemy, string& n,bool &esc,bool &Item) {
+	 int eat = 0, bite = 0;
+	 char command;
+	cout << "Player" << player << "�̃^�[��" << endl;
+	cout << "�W���b�W�Ɉڂ�ۂ�j�A�A�C�e�����g�p(1�����)����ۂ͑Ή�����e�L�[�������Ă�������" << endl;
+	cin >> command;
+	if (command == 'h' && Item == 0) {
+		hl(senemy,Item);
+	}
+	else if (command == 'j') {
+		while (1) {
+			cout << "�W���b�W���s���Ă�������" << endl;
+			cin >> n;
+			if (n.size() == 3) {
+				cout << "[���͂͐���ɍs���܂���]" << endl;
+				break;
+			}
+			else cout << "[���͂��s�K�ł��B�ē��͂��Ă��������B]" << endl;
+		}
+
+		//Player�^�[��
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (n.at(i) == senemy.at(j)) {
+					if (i == j) eat++;
+					else bite++;
+				}
+			}
+		}
+
+
+		cout << "EAT:" << eat << "  " << "BITE:" << bite << endl << endl;
+		if (eat == 3) {
+			esc = 1;
+		}
+
+		eat = 0, bite = 0;
+	}
+}
+
+
+int main() {
+	string s1, s2, n1, n2;//s�������An���\�z
+	int eat = 0, bite = 0, winner = 0;
+	bool Item = 0,esc = 0;
+
+	enter(1, s1);
+	enter(2, s2);
+
+	while (1) {
+		attack(1, s2, n1, esc,Item);
+		if (esc) {
+			break;
+			winner = 1;
+		}
+		attack(2, s1, n2, esc,Item);
+		if (esc) {
+			break;
+			winner = 2;
+		}
+	}
+
+	if (winner == 1) {
+		cout << "Player 1 wins !" << endl;
+	}
+	else {
+		cout << "Player 2 wins !" << endl;
+	}
+}

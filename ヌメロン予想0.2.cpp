@@ -4,108 +4,108 @@ using namespace std;
 
 
 
-//fCALLŠÖ”
+//fCALLé–¢æ•°
 void fCALL(int &call) {
-		cout << "CALL‚µ‚½”’l‚ğ“ü—Í‚µ‚Ä‰º‚³‚¢" << endl;
+		cout << "CALLã—ãŸæ•°å€¤ã‚’å…¥åŠ›ã—ã¦ä¸‹ã•ã„" << endl;
 		cin >> call;
 }
 
 
 
-//fEATŠÖ”
+//fEATé–¢æ•°
 void fEAT(vector<vector<int>> &vec, int call) {
 	int eat;
-	//“ü—Í
+	//å…¥åŠ›
 	while (1) {
-		cout << "EAT”‚ğ“ü—Í‚µ‚Ä‰º‚³‚¢" << endl;
+		cout << "EATæ•°ã‚’å…¥åŠ›ã—ã¦ä¸‹ã•ã„" << endl;
 		cin >> eat;
 		if (eat < 3) break;
-		else cout << "Ä“ü—Í‚µ‚Ä‰º‚³‚¢" << endl;
+		else cout << "å†å…¥åŠ›ã—ã¦ä¸‹ã•ã„" << endl;
 	}
-	//‘æˆê•ªŠò
+	//ç¬¬ä¸€åˆ†å²
 	if(eat == 0){
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
-				int a, b, c;//ŠeˆÊ
+				int a, b, c;//å„ä½
 				a = i, b = (vec.at(i).at(j) - 100 * i) / 10, c = (vec.at(i).at(j) - 100 * i) % 10;
-				//1Œ…ˆÈãˆê’v‚ÌœŠO
+				//1æ¡ä»¥ä¸Šä¸€è‡´ã®é™¤å¤–
 				if (call / 100 == a) vec.at(i).at(j) = 0;
 				if ((call % 100) / 10 == b) vec.at(i).at(j) = 0;
 				if ((call % 100) % 10 == c)vec.at(i).at(j) = 0;
 			}
 		}
 	}
-	//‘æ“ñ•ªŠò
+	//ç¬¬äºŒåˆ†å²
 	if(eat == 1){
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
-				int a, b, c;//ŠeˆÊ
+				int a, b, c;//å„ä½
 				a = i, b = (vec.at(i).at(j) - 100 * i) / 10, c = (vec.at(i).at(j) - 100 * i) % 10;
-				//2Œ…ˆÈãˆê’v‚ÌœŠO
+				//2æ¡ä»¥ä¸Šä¸€è‡´ã®é™¤å¤–
 				if ((call / 100 == a && (call % 100) / 10 == b)
 					|| ((call % 100) / 10 == b && (call % 100) % 10 == c)
 					|| ((call % 100) % 10 == c && call / 100 == a)) vec.at(i).at(j) = 0;
-				//•sˆê’v‚ÌœŠO
+				//ä¸ä¸€è‡´ã®é™¤å¤–
 				if (call / 100 != a && (call % 100) / 10 != b
 					 && (call % 100) % 10 != c) vec.at(i).at(j) = 0;
 			}
 		}
 	}
-	//‘æO•ªŠò
+	//ç¬¬ä¸‰åˆ†å²
 	if(eat == 2){
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
-				int a, b, c;//ŠeˆÊ
+				int a, b, c;//å„ä½
 				a = i, b = (vec.at(i).at(j) - 100 * i) / 10, c = (vec.at(i).at(j) - 100 * i) % 10;
-				//1Œ…ˆê’v‚ÌœŠO
+				//1æ¡ä¸€è‡´ã®é™¤å¤–
 				if (((call / 100 == a && (call % 100) / 10 != b) && ((call % 100) % 10 != c)) 
 				 || ((call / 100 != a && (call % 100) / 10 == b) && ((call % 100) % 10 != c)) 
 				 || ((call / 100 != a && (call % 100) / 10 != b) && ((call % 100) % 10 == c))) vec.at(i).at(j) = 0;
 
-				//•sˆê’v‚ÌœŠO
+				//ä¸ä¸€è‡´ã®é™¤å¤–
 				if (call / 100 != a && (call % 100) / 10 != b
 					&& (call % 100) % 10 != c) vec.at(i).at(j) = 0;
 			}
 		}
 		
 	}
-	//‘æl•ªŠò
+	//ç¬¬å››åˆ†å²
 	if (eat == 3) cout << "You win!" << endl;
 }
 
 
-//fBITEŠÖ”
+//fBITEé–¢æ•°
 void fBITE(vector<vector<int>>& vec, int call) {
 	int bite;
-	//“ü—Í
+	//å…¥åŠ›
 	while (1) {
-		cout << "BITE”‚ğ“ü—Í‚µ‚Ä‰º‚³‚¢" << endl;
+		cout << "BITEæ•°ã‚’å…¥åŠ›ã—ã¦ä¸‹ã•ã„" << endl;
 		cin >> bite;
 		if (bite <= 3) break;
-		else cout << "Ä“ü—Í‚µ‚Ä‰º‚³‚¢" << endl;
+		else cout << "å†å…¥åŠ›ã—ã¦ä¸‹ã•ã„" << endl;
 	}
-	//‘æˆê•ªŠòok
+	//ç¬¬ä¸€åˆ†å²ok
 	if (bite == 0) {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
-				int a, b, c;//ŠeˆÊ
+				int a, b, c;//å„ä½
 				a = i, b = (vec.at(i).at(j) - 100 * i) / 10, c = (vec.at(i).at(j) - 100 * i) % 10;
-				int ca, cb, cc;//call‚ÌŠeˆÊ
+				int ca, cb, cc;//callã®å„ä½
 				ca = call / 100, cb = (call % 100) / 10, cc = (call % 100) % 10;
 
-				//1ˆÈã‚Ìbite‚ÌœŠO
+				//1ä»¥ä¸Šã®biteã®é™¤å¤–
 				if (ca == b || ca == c || cb == a || cb == c || cc == a || cc == b) vec.at(i).at(j) = 0;
 
 			}
 		}
 	}
-	//‘æ“ñ•ªŠò
+	//ç¬¬äºŒåˆ†å²
 	if (bite == 1) {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
-				int a, b, c;//”z—ñ—v‘f‚ÌŠeˆÊ
+				int a, b, c;//é…åˆ—è¦ç´ ã®å„ä½
 				a = i, b = (vec.at(i).at(j) - 100 * i) / 10, c = (vec.at(i).at(j) - 100 * i) % 10;
-				int ca, cb, cc;//call‚ÌŠeˆÊ
+				int ca, cb, cc;//callã®å„ä½
 				ca = call / 100, cb = (call % 100) / 10, cc = (call % 100) % 10;
 
 				if (((ca == b || ca == c) && (cb != a && cb != c) && (cc != a && cc != b )) ||
@@ -117,13 +117,13 @@ void fBITE(vector<vector<int>>& vec, int call) {
 			}
 		}
 	}
-	//‘æO•ªŠò
+	//ç¬¬ä¸‰åˆ†å²
 	if (bite == 2) {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
-				int a, b, c;//ŠeˆÊ
+				int a, b, c;//å„ä½
 				a = i, b = (vec.at(i).at(j) - 100 * i) / 10, c = (vec.at(i).at(j) - 100 * i) % 10;
-				int ca, cb, cc;//call‚ÌŠeˆÊ
+				int ca, cb, cc;//callã®å„ä½
 				ca = call / 100, cb = (call % 100) / 10, cc = (call % 100) % 10;
 
 				if (((ca == b || ca == c) && (cb == a || cb == c) && (cc != a && cc != b)) ||
@@ -135,16 +135,16 @@ void fBITE(vector<vector<int>>& vec, int call) {
 		}
 
 	}
-	//‘æl•ªŠòok
+	//ç¬¬å››åˆ†å²ok
 	if (bite == 3) {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
-				int a, b, c;//ŠeˆÊ
+				int a, b, c;//å„ä½
 				a = i, b = (vec.at(i).at(j) - 100 * i) / 10, c = (vec.at(i).at(j) - 100 * i) % 10;
-				int ca, cb, cc;//call‚ÌŠeˆÊ
+				int ca, cb, cc;//callã®å„ä½
 				ca = call / 100, cb = (call % 100) / 10, cc = (call % 100) % 10;
 
-				//3biteˆÈŠO‚ÌœŠO
+				//3biteä»¥å¤–ã®é™¤å¤–
 				if ((ca == b && cb == c && cc == a) || (ca == c && cb == a && cc == b)) {
 				}
 				else vec.at(i).at(j) = 0;
@@ -157,13 +157,13 @@ void fBITE(vector<vector<int>>& vec, int call) {
 
 
 
-//mainŠÖ”
+//mainé–¢æ•°
 int main() {
-	//2ŸŒ³”z—ñvec‚ğ’è‹`(10*100)
+	//2æ¬¡å…ƒé…åˆ—vecã‚’å®šç¾©(10*100)
 	vector<vector<int>> vec(10, vector<int>(100));
 	int call = 0,pattern = 0;
 
-	//vec‚É000~999‚ğ‘ã“ü
+	//vecã«000~999ã‚’ä»£å…¥
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 100; j++) {
 			vec.at(i).at(j) = 100 * i + j;
@@ -171,10 +171,10 @@ int main() {
 	}
 
 	
-	//d•¡‚ÌœŠO
+	//é‡è¤‡ã®é™¤å¤–
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 100; j++) {
-			if(i == j/10 || j / 10 == j % 10 || j % 10 == i)/*ŠeˆÊd•¡”»’è*/{
+			if(i == j/10 || j / 10 == j % 10 || j % 10 == i)/*å„ä½é‡è¤‡åˆ¤å®š*/{
 				vec.at(i).at(j) = 0;
 			}
 		}
@@ -185,12 +185,12 @@ int main() {
 	}
 
 
-	//ˆÈ‰ºƒ‹[ƒv
+	//ä»¥ä¸‹ãƒ«ãƒ¼ãƒ—
 	while (1) {
 		pattern = 0;
 		//CALL
 		fCALL(call);
-		//CALL‚³‚ê‚½”’l‚ğœŠO
+		//CALLã•ã‚ŒãŸæ•°å€¤ã‚’é™¤å¤–
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
 				if (vec.at(i).at(j) == call) vec.at(i).at(j) = 0;
@@ -201,7 +201,7 @@ int main() {
 		//BITE
 		fBITE(vec, call);
 
-		//o—Í
+		//å‡ºåŠ›
 		system("cls");
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
@@ -214,13 +214,13 @@ int main() {
 			}
 		}
 
-		//c‚èƒpƒ^[ƒ“”
+		//æ®‹ã‚Šãƒ‘ã‚¿ãƒ¼ãƒ³æ•°
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100 ; j++) {
 				if (vec.at(i).at(j) != 0) pattern++;
 			}
 		}
-		cout << "Œ»İc‚è" << pattern << "’Ê‚è‚Å‚·";
+		cout << "ç¾åœ¨æ®‹ã‚Š" << pattern << "é€šã‚Šã§ã™";
 		cout << endl;
 	}
 

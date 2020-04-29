@@ -18,7 +18,7 @@ int minoType = 0, minoAngle = 0;
 bool esc = 0;
 
 
-//MINO_TYPE‚ÆMINO_ANGLE
+//MINO_TYPEã¨MINO_ANGLE
 enum {
 	MINO_TYPE_I,
 	MINO_TYPE_O,
@@ -38,7 +38,7 @@ enum {
 };
 
 
-//ƒ~ƒm‚ÌŒ`
+//ãƒŸãƒã®å½¢
 char minoShapes[MINO_TYPE_MAX][MINO_ANGLE_MAX][MINO_HEIGHT][MINO_WIDTH] = {
 	//MINO_TYPE_I,
 	{
@@ -279,29 +279,29 @@ char minoShapes[MINO_TYPE_MAX][MINO_ANGLE_MAX][MINO_HEIGHT][MINO_WIDTH] = {
 }
 };
 
-//•`‰æˆ—
+//æç”»å‡¦ç†
 void display(int score) {
 	memcpy(displayBuffer, field, sizeof(field));
 
-	//ƒoƒbƒtƒ@‚Éƒ~ƒm‚ğ‘‚«‚Ş
+	//ãƒãƒƒãƒ•ã‚¡ã«ãƒŸãƒã‚’æ›¸ãè¾¼ã‚€
 	for (int i = 0; i < MINO_HEIGHT; i++) {
 		for (int j = 0; j < MINO_WIDTH; j++) {
 			displayBuffer[minoY + i][minoX + j] |= minoShapes[minoType][minoAngle][i][j];
 		}
 	}
-	//ƒoƒbƒtƒ@‚ğŠî‚É•`‰æˆ—
+	//ãƒãƒƒãƒ•ã‚¡ã‚’åŸºã«æç”»å‡¦ç†
 	for (int i = 0; i < FIELD_HEIGHT; i++) {
 		for (int j = 0; j < FIELD_WIDTH; j++) {
-			if (displayBuffer[i][j] == 1) cout << " ";
-			else if (displayBuffer[i][j] == 2)cout << "¡";
-			else cout << "@";
+			if (displayBuffer[i][j] == 1) cout << "â–¡";
+			else if (displayBuffer[i][j] == 2)cout << "â– ";
+			else cout << "ã€€";
 		}
 		cout <<endl;
 	}
 	cout << "score:" << score << endl;
 }
 
-//ƒ~ƒm‚Ì‰Šú‰»
+//ãƒŸãƒã®åˆæœŸåŒ–
 void resetMino() {
 	minoX = 5;
 	minoY = 0;
@@ -323,7 +323,7 @@ bool isHit(int _minoX, int _minoY, int _minoType, int _minoAngle) {
 int main() {
 	memset(field, 0, sizeof(field));
 	
-	//ƒtƒB[ƒ‹ƒhì¬
+	//ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ä½œæˆ
 	for (int i = 0; i < FIELD_HEIGHT; i++) {
 		field[i][0] = 2;
 		field[i][FIELD_WIDTH - 1] = 2;
@@ -338,7 +338,7 @@ int main() {
 	int yuka = 0,score = 0,linenum = 0;
 	while (1) {
 		
-		//—‰ºˆ—
+		//è½ä¸‹å‡¦ç†
 			if (_kbhit()) {
 				switch (_getch()) {
 
@@ -395,7 +395,7 @@ int main() {
 				}
 				else minoY++;
 
-				//ƒ‰ƒCƒ“Á‹ˆ—
+				//ãƒ©ã‚¤ãƒ³æ¶ˆå»å‡¦ç†
 				linenum = 0;
 				for (int i = 0; i < FIELD_HEIGHT - 1; i++) {
 					bool lineFill = true;
@@ -408,7 +408,7 @@ int main() {
 						for (int j = i ; 0 <= j; j--) {
 							memcpy(field[j], field[j - 1], FIELD_WIDTH);
 
-							//ƒtƒB[ƒ‹ƒhì¬
+							//ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ä½œæˆ
 							for (int i = 0; i < FIELD_HEIGHT; i++) {
 								field[i][0] = 2;
 								field[i][FIELD_WIDTH - 1] = 2;
